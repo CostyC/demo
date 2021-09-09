@@ -18,8 +18,10 @@ RUN docker-php-ext-install ${PHP_EXTENSIONS} && \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN git clone https://github.com/CostyC/demo.git .
+COPY composer.json composer.lock .
 
 RUN composer install
+
+COPY . .
 
 RUN chown -R www-data:www-data var

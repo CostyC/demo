@@ -18,10 +18,12 @@ RUN docker-php-ext-install ${PHP_EXTENSIONS} && \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+WORKDIR /opt/app
+
 COPY composer.json composer.lock .
 
 RUN composer install
 
-COPY . .
+COPY . /opt/app/
 
 RUN chown -R www-data:www-data var

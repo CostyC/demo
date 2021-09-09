@@ -20,7 +20,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 WORKDIR /opt/app/
 
-COPY composer.json composer.lock .
+COPY composer.json composer.lock /opt/app/
 
 RUN composer install
 
